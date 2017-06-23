@@ -1,50 +1,66 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import axios from 'axios';
+import {HashRouter} from 'react-router-dom'
+import Header from './components/Header.js';
+import Posts from './components/Posts.js';
 
-class App extends Component {
-  constructor() {
-      super();
-      const appUrl = 'http://naobcyouth.org/wp-json/wp/v2'; // Wordpress installation url
+class App extends React.Component {
+    constructor() {
+        super();
 
-      this.pagesEndPoint = `${appUrl}/pages`; // Endpoint for getting Wordpress Pages
-      this.postsEndPoint = `${appUrl}/posts`; // Endpoint for getting Wordpress Posts
-      this.getPosts();
-  }
+        this.state = {
+            posts: []
+        }
+    }
 
-  getPosts() {
-    axios.get(this.postsEndPoint)
-        .then((response) => {
-            console.log(response.data);
-            this.setState({
-                posts: response.data
-            });
-        })
-        .catch((error) => console.error(error))
-  }
+    componentDidMount() {
+        let dataURL = 'http://naobcyouth.org/wp-json/wp/v2/posts';
 
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <ul>
-            {this.state.posts.map((post) =>
-                <li>
-                    <h1>{post.title}</h1>
-                    <p>{post.content.rendered}</p>
-                </li>
-            )}
-        </ul>
-      </div>
-    );
-  }
+        fetch(dataURL)
+            .then(res => res.json())
+            .then(res => {
+                this.setState({
+                    posts: res
+                })
+            })
+    }
+
+    render() {
+        return (
+            <div>
+                <Header />
+                <Posts />
+            </div>
+        )
+    }
+
+    // render() {
+    //     let posts = this.state.posts.map((post, index) => {
+    //         return (
+    //             <Post post={post} key={index} />
+    //         )
+    //     });
+    //
+    //     return (
+    //         <div>
+    //             <h1>NAOBC Youth</h1>
+    //             {posts}
+    //         </div>
+    //     )
+    // }
+
+
 }
 
 export default App;
+
+class Post extends React.Component {
+    render() {
+        return (
+            <div>
+                <h2>{this.props.post.title.rendered}</h2>
+                <div>{this.props.post.excerpt.rendered}</div>
+            </div>
+        )
+    }
+}
