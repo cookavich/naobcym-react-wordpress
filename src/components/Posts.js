@@ -1,4 +1,11 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Link
+} from 'react-router-dom'
+
 
 class Posts extends React.Component {
     constructor() {
@@ -22,9 +29,20 @@ class Posts extends React.Component {
     }
 
     render() {
-        return <p>Hey</p>
+        let posts = this.state.posts.map((post) => {
+            return (
+                <div class="post">
+                    <h2><Link to={`/post/${post.id}`}>{post.title.rendered}</Link></h2>
+                    <div>{post.excerpt.rendered}</div>
+                </div>
+            )
+        });
+        return (
+            <div>
+                {posts}
+            </div>
+        )
     }
-
 }
 
 export default Posts;
