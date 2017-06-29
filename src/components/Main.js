@@ -1,12 +1,13 @@
 import React from 'react';
 import {
     BrowserRouter as Router,
-    Route,
+     Route,
     Switch,
     Link
 } from 'react-router-dom'
 import Posts from './Posts.js';
 import About from './About.js';
+import Post from './Post.js';
 
 class Main extends React.Component {
 
@@ -15,7 +16,8 @@ class Main extends React.Component {
             <main>
                 <Switch>
                     <Route exact path='/' component={Posts}/>
-                    <Route path='/About' component={About}/>
+                    <Route path='/about' component={About}/>
+                    <Route path='/post/:slug' component={Post}/>
                 </Switch>
             </main>
         )
@@ -23,3 +25,4 @@ class Main extends React.Component {
 }
 
 export default Main;
+

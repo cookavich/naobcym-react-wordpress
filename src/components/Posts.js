@@ -5,6 +5,7 @@ import {
     Switch,
     Link
 } from 'react-router-dom'
+import Post from './Post';
 
 
 class Posts extends React.Component {
@@ -17,7 +18,7 @@ class Posts extends React.Component {
     }
 
     componentDidMount() {
-        let dataURL = 'http://naobcyouth.org/wp-json/wp/v2/posts';
+        let dataURL = 'http://naobcyouth.org/wp-json/wp/v2/posts/?_embed&per_page=5';
 
         fetch(dataURL)
             .then(res => res.json())
@@ -31,8 +32,14 @@ class Posts extends React.Component {
     render() {
         let posts = this.state.posts.map((post) => {
             return (
-                <div class="post">
-                    <h2><Link to={`/post/${post.id}`}>{post.title.rendered}</Link></h2>
+                <div className="post" key={post.id}>
+                    <h2><Link to={{
+                        pathname: `/post/${post.slug}`,
+                        state: {post}
+                    }}>{post.title.rendered}</Link></h2>
+                    {post.featured_media ?
+                    <a href={post.link}><img src={post._embedded['wp:featuredmedia'][0].media_details.sizes["full"].source_url} /></a>
+                    : null}
                     <div>{post.excerpt.rendered}</div>
                 </div>
             )
