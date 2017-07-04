@@ -15,10 +15,10 @@ class Header extends React.Component {
         return (
             <header>
                 <nav>
+                    <div className="logo"><a href="naobcyouth.org">NAOBCYM</a></div>
                     <ul>
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/about'>About</Link></li>
-                        {/*<li><Link to='/schedule'>Schedule</Link></li>*/}
                     </ul>
                 </nav>
             </header>

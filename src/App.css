@@ -37,6 +37,11 @@ main .posts {
   max-width: 440px;
   align-items: center;
   text-align: center;
+  border-bottom: 1px dashed black;
+}
+
+.post:last-of-type {
+  border-bottom: none;
 }
 
 .post img {

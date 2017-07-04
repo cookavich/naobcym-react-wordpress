@@ -38,7 +38,7 @@ class Posts extends React.Component {
                         state: {post}
                     }}>{post.title.rendered}</Link></h2>
                     {post.featured_media ?
-                    <a href={post.link} className="img-link"><img src={post._embedded['wp:featuredmedia'][0].media_details.sizes["full"].source_url} /></a>
+                    <img src={post._embedded['wp:featuredmedia'][0].media_details.sizes["full"].source_url} />
                     : null}
                     <p dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}/>
 
