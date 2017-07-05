@@ -7,18 +7,35 @@ import {
 
 
 class Header extends React.Component {
-    // constructor() {
-    //     super();
-    // }
+    constructor() {
+        super();
+
+        this.state = {
+            pages: []
+        }
+    }
+
+    componentDidMount() {
+        let dataURL = 'http://naobcyouth.org/wp-json/wp/v2/pages';
+
+        fetch(dataURL)
+            .then(res => res.json())
+            .then(res => {
+                this.setState({
+                    pages: res
+                })
+            })
+    }
 
     render() {
         return (
             <header>
                 <nav>
-                    <div className="logo"><a href="naobcyouth.org">NAOBCYM</a></div>
+                    <div className="logo"><Link to="/">NAOBCYM</Link></div>
                     <ul>
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/about'>About</Link></li>
+                        {this.state.pages.map(page => {
+                            return <li key={page.id}><Link to={'/'+page.slug}>{page.title.rendered}</Link></li>
+                        })}
                     </ul>
                 </nav>
             </header>
