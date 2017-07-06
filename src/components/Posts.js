@@ -18,7 +18,7 @@ class Posts extends React.Component {
     }
 
     componentDidMount() {
-        let dataURL = 'http://naobcyouth.org/wp-json/wp/v2/posts/?_embed&per_page=5';
+        let dataURL = 'http://naobcyouth.org/wp-json/wp/v2/posts/?_embed';
 
         fetch(dataURL)
             .then(res => res.json())

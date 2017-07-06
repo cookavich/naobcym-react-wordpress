@@ -33,9 +33,8 @@ class Header extends React.Component {
                 <nav>
                     <div className="logo"><Link to="/">NAOBCYM</Link></div>
                     <ul>
-                        <li><Link to={'/c-groups'}>C-GROUPS</Link></li>
-                        <li><Link to={'/camp'}>CAMP</Link></li>
-                        <li><Link to={'/parents'}>PARENTS</Link></li>
+                        <li><Link to='/'>HOME</Link></li>
+                        <li><Link to='/about'>ABOUT</Link></li>
                     </ul>
                 </nav>
             </header>
