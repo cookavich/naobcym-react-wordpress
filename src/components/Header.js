@@ -33,9 +33,9 @@ class Header extends React.Component {
                 <nav>
                     <div className="logo"><Link to="/">NAOBCYM</Link></div>
                     <ul>
-                        {this.state.pages.map(page => {
-                            return <li key={page.id}><Link to={'/'+page.slug}>{page.title.rendered}</Link></li>
-                        })}
+                        <li><Link to={'/c-groups'}>C-GROUPS</Link></li>
+                        <li><Link to={'/camp'}>CAMP</Link></li>
+                        <li><Link to={'/parents'}>PARENTS</Link></li>
                     </ul>
                 </nav>
             </header>

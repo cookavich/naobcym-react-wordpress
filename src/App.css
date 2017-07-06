@@ -65,6 +65,7 @@ main .posts {
   padding: 8px;
 }
 
+.subPage,
 .single-post {
   align-self: center;
   display: flex;
@@ -74,6 +75,7 @@ main .posts {
   margin: 0 auto;
 }
 
+.subPage img,
 .single-post img {
   max-width: 100%;
   padding: 16px;

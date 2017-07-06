@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from "react-router-dom";
 
 class SubPage extends React.Component {
     constructor() {
@@ -19,12 +20,20 @@ class SubPage extends React.Component {
             })
     }
 
+    shouldComponentUpdate() {
+        if (this.props.update){
+            this.render();
+            return true;
+        }
+        return false;
+    }
+
     render() {
         return (
             <div>
                 {this.state.page.map(content => {
                     return (
-                        <div>
+                        <div key={content.id} className="subPage">
                             <h1>{content.title.rendered}</h1>
                             <div dangerouslySetInnerHTML={{__html: content.content.rendered}}/>
                         </div>
@@ -35,4 +44,4 @@ class SubPage extends React.Component {
     }
 }
 
-export default SubPage;
+export default withRouter(SubPage);

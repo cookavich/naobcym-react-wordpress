@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 import Posts from './Posts.js';
 import Post from './Post.js';
-import SubPage from "./SubPage";
+import SubPage from "./SubPage.js";
 
 class Main extends React.Component {
 
@@ -16,7 +16,7 @@ class Main extends React.Component {
             <main>
                 <Switch>
                     <Route exact path='/' component={Posts}/>
-                    <Route path='/:slug' component={SubPage}/>
+                    <Route path='/:slug' render={() => <SubPage update={true}/>}/>
                     <Route path='/post/:id' component={Post}/>
                 </Switch>
             </main>
