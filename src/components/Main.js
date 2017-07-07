@@ -5,8 +5,8 @@ import {
     Switch,
     Link
 } from 'react-router-dom'
-import Posts from './Posts.js';
-import Post from './Post.js';
+import PostsList from './PostsList.js';
+import SinglePost from './SinglePost.js';
 import About from './About.js';
 
 class Main extends React.Component {
@@ -15,8 +15,8 @@ class Main extends React.Component {
         return (
             <main>
                 <Switch>
-                    <Route exact path='/' component={Posts}/>
-                    <Route path='/post/:id' component={Post}/>
+                    <Route exact path='/' component={PostsList}/>
+                    <Route path='/post/:id' component={SinglePost}/>
                     <Route exact path='/about' component={About}/>
                 </Switch>
             </main>
