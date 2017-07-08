@@ -8,7 +8,7 @@ class Post extends React.Component {
     }
 
     componentWillMount() {
-        let postURL = `http://naobcyouth.org/wp-json/wp/v2/posts/${this.props.match.params.id}/?_embed`;
+        let postURL = `https://naobcyouth.org/wp-json/wp/v2/posts/${this.props.match.params.id}/?_embed`;
         fetch(postURL)
             .then(res => res.json())
             .then(res => {

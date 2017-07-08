@@ -13,7 +13,7 @@ class PostsList extends React.Component {
     }
 
     componentDidMount() {
-        let dataURL = 'http://naobcyouth.org/wp-json/wp/v2/posts/?_embed';
+        let dataURL = 'https://naobcyouth.org/wp-json/wp/v2/posts/?_embed';
 
         Axios.get(dataURL)
             .then(res => {
