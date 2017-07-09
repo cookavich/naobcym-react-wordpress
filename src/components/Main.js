@@ -5,9 +5,10 @@ import {
     Switch,
     Link
 } from 'react-router-dom'
-import PostsList from './PostsList.js';
 import SinglePost from './SinglePost.js';
 import About from './About.js';
+import Home from './Home.js';
+import PostArchive from './PostArchive.js';
 
 class Main extends React.Component {
 
@@ -15,8 +16,8 @@ class Main extends React.Component {
         return (
             <main>
                 <Switch>
-                    <Route exact path='/' component={PostsList}/>
-                    <Route strict path='/posts/:page-number' component={PostsList}/>
+                    <Route exact path='/' component={Home}/>
+                    <Route strict path='/posts/:pageNumber' component={PostArchive}/>
                     <Route strict path='/post/:id' component={SinglePost}/>
                     <Route exact path='/about' component={About}/>
                 </Switch>

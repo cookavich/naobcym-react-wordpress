@@ -39,6 +39,11 @@ a:hover {
 a.img-link:hover {
   background: none;
 }
+.greeting {
+  max-width: 440px;
+  text-align: center;
+  margin: auto;
+}
 
 main .posts {
   width: 75%;
@@ -86,3 +91,20 @@ main .posts {
 }
 
 
+.pagination {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.pagination a {
+  margin: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.activeLink {
+  color: #fff;
+  background: #22BAD9;
+  pointer-events: none;
+}
