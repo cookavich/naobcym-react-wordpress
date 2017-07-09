@@ -4,8 +4,8 @@ import PostExcerpt from './PostExcerpt.js'
 import Pagination from './Pagination.js';
 
 class PostsList extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             posts: [],
@@ -17,15 +17,20 @@ class PostsList extends React.Component {
     }
 
     handlePageChange(pageNum) {
-        this.setState({
+        this.setState(prevState => ({
             currentPage: pageNum
-        });
-        this.getPosts();
-        this.render();
+        }));
     }
 
     componentDidMount() {
-       this.getPosts();
+        let dataURL = `https://naobcyouth.org/wp-json/wp/v2/posts?page=${this.state.currentPage}&_embed`;
+        Axios.get(dataURL)
+            .then(res => {
+                this.setState({
+                    posts: res.data,
+                    totalPages: res.headers['x-wp-totalpages'],
+                })
+            })
     }
 
     getPosts() {
@@ -48,7 +53,6 @@ class PostsList extends React.Component {
                     return <Pagination
                         key={index}
                         link={index+1}
-                        onPageChange={this.handlePageChange}
                     />
                 })}
             </div>

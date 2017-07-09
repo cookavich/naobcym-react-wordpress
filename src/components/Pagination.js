@@ -8,7 +8,7 @@ class Pagination extends React.Component {
     }
 
     handleClick() {
-        this.props.onPageChange(this.props.link);
+        // this.props.onPageChange(this.props.link);
     }
 
     render() {
