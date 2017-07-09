@@ -15,7 +15,8 @@ class Main extends React.Component {
         return (
             <main>
                 <Switch>
-                    <Route exact path='/' component={PostsList}/>
+                    <Route path='/' component={PostsList}/>
+                    <Route path='/posts/:page-number' component={PostsList}/>
                     <Route path='/post/:id' component={SinglePost}/>
                     <Route exact path='/about' component={About}/>
                 </Switch>

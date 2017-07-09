@@ -1,13 +1,27 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom'
 
-export const Pagination = (props) => {
-    return (
-        <div className="post">
-            <h2><Link to={{pathname: `/post/${props.id}`}}>{props.title.rendered}</Link></h2>
-            {props.featured_media ?
-                <img src={props._embedded['wp:featuredmedia'][0].media_details.sizes["full"].source_url}/>
-                : null}
-            <p dangerouslySetInnerHTML={{__html: props.excerpt.rendered}}/>
-        </div>
-    )
-};
+class Pagination extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.props.onPageChange(this.props.link);
+    }
+
+    render() {
+        let link = this.props.link === 1
+            ? '/'
+            : `/posts/${this.props.link}`;
+        return (
+            <NavLink
+                to={{pathname: `${link}`}}
+                activeStyle={{fontWeight: 'bold'}}
+                onClick={this.handleClick}>{this.props.link}</NavLink>
+        )
+    }
+}
+
+export default Pagination;

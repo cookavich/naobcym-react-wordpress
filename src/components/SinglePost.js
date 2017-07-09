@@ -5,6 +5,8 @@ class Post extends React.Component {
     constructor() {
         super();
         this.state = {}
+
+        this.handlePageChange = this.handlePageChange.bind(this);
     }
 
     componentWillMount() {
